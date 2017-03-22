@@ -24,7 +24,7 @@
     <div>
         <div>
 
-            <h1 class="logo-name"><br/></h1>
+            <h1 class="logo-name"> <br/></h1>
 
         </div>
         <h3>{{trans('login.welcome')}}</h3>
@@ -32,27 +32,28 @@
             <!--Continually expanded and constantly improved Inspinia Admin Them (IN+)-->
         </p>--}}
 
-        <form class="m-t" action="{{ url('/login') }}" method="post">
+        <form class="m-t" action="{{ url('/password/reset') }}" method="post">
             {{ csrf_field() }}
+            <input type="hidden" name="token" value="{{ $token }}">
             <div class="form-group {{($errors->has('email')) ? 'has-error' : ''}}">
-                {{Form::text('email',null,['id'=>'email','class'=>'form-control','placeholder'=>trans('register.email')])}}
+                <input type="email" name="email" class="form-control" placeholder="Email">
                 @if ($errors->has('email'))
                     <span class="help-block m-b-none">{{$errors->first('email')}}</span>
                 @endif
             </div>
-            <div class="form-group {{($errors->has('password')) ? 'has-error' : ''}}">
-                {{Form::password('password',['id'=>'password','class'=>'form-control','placeholder'=>trans('register.password')])}}
+            <div class="form-group  {{($errors->has('password')) ? 'has-error' : ''}}">
+                <input type="password" name="password" class="form-control" placeholder="Password">
                 @if ($errors->has('password'))
                     <span class="help-block m-b-none">{{$errors->first('password')}}</span>
                 @endif
             </div>
-            <button type="submit" class="btn btn-primary block full-width m-b">{{trans('login.login')}}</button>
+            <div class="form-group">
+                <input type="password" name="password_confirmation" class="form-control" placeholder="Password">
 
-            <a href="{{url('/password/reset')}}">
-                <small>{{trans('login.forgot')}}</small>
-            </a>
-            <p class="text-muted text-center"><small>Do not have an account?</small></p>
-            <a class="btn btn-sm btn-white btn-block" href="{{url('/register')}}">Create an account</a>
+            </div>
+
+            <button type="submit" class="btn btn-primary block full-width m-b">{{trans('login.reset')}}</button>
+
         </form>
         <p class="m-t">
             <small>{{trans('login.copy')}} &copy; 2017</small>
@@ -64,9 +65,6 @@
 <script src="{!! asset('js/app.js') !!}" type="text/javascript"></script>
 
 @section('scripts')
-    <script>
-
-    </script>
 @show
 
 </body>
