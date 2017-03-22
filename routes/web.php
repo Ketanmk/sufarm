@@ -12,7 +12,9 @@
 */
 Route::auth();
 Route::group(['middleware' => 'auth'], function () {
-
+    Route::delete('/categories/activate/{id}',['as'=>'categories.activate','uses'=>'CategoriesController@activate']);
+    Route::delete('/categories/deactivate/{id}',['as'=>'categories.deactivate','uses'=>'CategoriesController@deactivate']);
+    Route::resource('/categories',"CategoriesController");
     Route::get('/', 'HomeController@index')->name("main");
     Route::get('/minor', 'HomeController@minor')->name("minor");
 });
