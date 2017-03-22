@@ -63,11 +63,7 @@
 
 @section('scripts')
     <script>
-        $('#changeLang').on('click', function () {
-            if ($("#changeLang").val() != '') {
-                window.location.replace("{{url('/changelang/')}}/" + $("#changeLang").val());
-            }
-        });
+
     </script>
 @show
 

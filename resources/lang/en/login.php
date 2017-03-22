@@ -2,10 +2,8 @@
 return [
     'title' => 'Login',
     'login' => 'Login',
-    'welcome' => 'Welcome to Device Manager',
-    'serial' => [
-        'welcome' => 'Welcome to Device Manager serial Page',
-    ],
+    'welcome' => 'Welcome to Sunder Farms Dash Board',
+
     'email' => 'E-mail',
     'password' => 'Password',
     'forgot' => "Forgot password?",
