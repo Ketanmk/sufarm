@@ -8,7 +8,7 @@
         @endif</h4>
 </div>
 @if(isset($category))
-    {{ Form::model($device, ['route' => ['categories.update', $category->id], 'method' => 'patch', 'id'=>'formTest']) }}
+    {{ Form::model($category, ['route' => ['categories.update', $category->id], 'method' => 'patch', 'id'=>'formTest']) }}
 @else
     {{ Form::open(['route' => 'categories.store', 'id'=>'formTest']) }}
 @endif

@@ -38,6 +38,11 @@ class Categories extends BaseModel
         return $this->hasMany(self::class, 'category_id');
     }
 
+    public function photos()
+    {
+        return $this->hasMany(Photo::class, 'category_id');
+    }
+
     public function createdBy()
     {
         return $this->belongsTo(User::class, 'created_by');

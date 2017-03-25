@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CategoriesRequest;
+use App\Http\Requests\PhotoRequestUpdate;
+use App\Http\Requests\PhotosRequest;
 use App\Models\Categories;
+use App\Models\Photo;
 use Illuminate\Http\Request;
 
-class CategoriesController extends BaseController
+class PhotosController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +17,9 @@ class CategoriesController extends BaseController
      */
     public function index()
     {
-        $categories = Categories::all();
+        $photos = Photo::get();
 
-        return view('categories.index', compact('categories'));
+        return view('photos.index', compact('photos'));
     }
 
     /**
@@ -29,7 +31,7 @@ class CategoriesController extends BaseController
     {
         $categories = Categories::all()->pluck('name', 'id');
 
-        return view('categories.create', compact('categories'));
+        return view('photos.create', compact('categories'));
     }
 
     /**
@@ -38,14 +40,19 @@ class CategoriesController extends BaseController
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CategoriesRequest $request)
+    public function store(PhotosRequest $request)
     {
-        $category = Categories::create([
+
+        $file = customUploadFile('photo', $path = "photos");
+        $photo = Photo::create([
             'name' => $request->name,
-            'category_id' => ($request->category_id) ? $request->category_id : NULL,
+            'details' => $request->details,
+            'photo' => $file,
+            'category_id' => $request->category_id
         ]);
 
-        return 'Gallery Created!!';
+        return 'Photo Uploaded!';
+
     }
 
     /**
@@ -56,7 +63,9 @@ class CategoriesController extends BaseController
      */
     public function show($id)
     {
-        //
+        $photo = Photo::find($id);
+
+        return view('photos.show',compact('photo'));
     }
 
     /**
@@ -67,9 +76,10 @@ class CategoriesController extends BaseController
      */
     public function edit($id)
     {
-        $categories = Categories::where('id', '<>', $id)->get()->pluck('name', 'id');
-        $category = Categories::find($id);
-        return view('categories.create', compact('categories', 'category'));
+        $photo = Photo::find($id);
+        $categories = Categories::all()->pluck('name', 'id');
+
+        return view('photos.create', compact('photo', 'categories'));
     }
 
     /**
@@ -79,15 +89,17 @@ class CategoriesController extends BaseController
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CategoriesRequest $request, $id)
+    public function update(PhotoRequestUpdate $request, $id)
     {
-        $category = Categories::find($id);
-        $category->update([
+        $photo = Photo::find($id);
+
+        $photo->update([
             'name' => $request->name,
-            'category_id' => ($request->category_id) ? $request->category_id : NULL,
+            'details' => $request->details,
+            'category_id' => $request->category_id
         ]);
 
-        return 'Gallery Updated!!';
+        return 'Updated!';
     }
 
     /**
@@ -98,38 +110,30 @@ class CategoriesController extends BaseController
      */
     public function destroy($id)
     {
-        $category = Categories::with('child','photos')->find($id);
-        if (count($category->child) > 0) {
-            return 'you can\'t delete this gallery you should delete child galleries first';
-        }
-        if (count($category->photos) > 0) {
-            return 'you can\'t delete this gallery you should delete child photos first';
-        }
+        $photo = Photo::find($id);
+        $photo->delete();
 
-        $category->delete();
-
-        return 'Gallery deleted';
-
+        return 'Deleted!!';
     }
 
     public function activate($id)
     {
-        $category = Categories::findOrFail($id);
+        $photo = Photo::findOrFail($id);
 
 
-        $category->status = 1;
-        $category->save();
+        $photo->status = 1;
+        $photo->save();
 
         return trans('main.labels.activated');
     }
 
     public function deactivate($id)
     {
-        $category = Categories::findOrFail($id);
+        $photo = Photo::findOrFail($id);
 
 
-        $category->status = 0;
-        $category->save();
+        $photo->status = 0;
+        $photo->save();
 
         return trans('main.labels.deactivated');
     }
