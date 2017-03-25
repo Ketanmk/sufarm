@@ -1,8 +1,9 @@
 <div class="footer">
-    <div class="pull-right">
-        Example text
-    </div>
+
     <div>
-        <strong>Copyright</strong> Example Company &copy; 2014-2017
+        {{trans('login.copy')}}
     </div>
 </div>
+<script>
+    var show = '{!! trans('main.dataTable.show') !!}'
+</script>

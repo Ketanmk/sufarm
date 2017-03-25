@@ -40,14 +40,14 @@
 }
 
 .btn-primary {
-  background-color: $navy;
-  border-color: $navy;
+  //background-color: $navy;
+  //border-color: $navy;
   color: #FFFFFF;
 }
 
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open .dropdown-toggle.btn-primary, .btn-primary:active:focus, .btn-primary:active:hover, .btn-primary.active:hover, .btn-primary.active:focus {
-  background-color: darken($navy, 3%);
-  border-color: darken($navy, 3%);
+  background-color: darken($blue, 3%);
+  border-color: darken($blue, 3%);
   color: #FFFFFF;
 }
 

@@ -51,6 +51,8 @@
             <a href="{{url('/password/reset')}}">
                 <small>{{trans('login.forgot')}}</small>
             </a>
+            <p class="text-muted text-center"><small>Do not have an account?</small></p>
+            <a class="btn btn-sm btn-white btn-block" href="{{url('/register')}}">Create an account</a>
         </form>
         <p class="m-t">
             <small>{{trans('login.copy')}} &copy; 2017</small>
@@ -63,11 +65,7 @@
 
 @section('scripts')
     <script>
-        $('#changeLang').on('click', function () {
-            if ($("#changeLang").val() != '') {
-                window.location.replace("{{url('/changelang/')}}/" + $("#changeLang").val());
-            }
-        });
+
     </script>
 @show
 

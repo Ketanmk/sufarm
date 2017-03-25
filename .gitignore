@@ -1,4 +1,4 @@
-/node_modules
+node_modules/
 /public/storage
 /public/hot
 /storage/*.key
@@ -7,3 +7,4 @@
 Homestead.json
 Homestead.yaml
 .env
+storage
