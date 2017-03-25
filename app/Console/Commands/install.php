@@ -51,7 +51,7 @@ class install extends Command
             File::delete($myfile);
         }
         $this->showWelcomeMessage();
-        $this->setPermissions();
+        //$this->setPermissions();
         //
         $this->databaseSetup();
         $this->userSetup();
