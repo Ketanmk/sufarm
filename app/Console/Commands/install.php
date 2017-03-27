@@ -356,6 +356,8 @@ STEP
             'name' => $config['first'],
             'email' => $config['email'],
             'password' => bcrypt($config['pass']),
+            'status' => 1,
+            'type' => Constants::USERTYPES['SuperAdmin']
         ];
 
         $user = User::create($credentials);

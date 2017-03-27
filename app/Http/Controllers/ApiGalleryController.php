@@ -7,10 +7,14 @@ use Illuminate\Http\Request;
 
 class ApiGalleryController extends ApiController
 {
-    public function index()
+    public function index($id = '')
     {
         $limit = request('limit') ?: 10;
-        $galleries = Categories::with('parent', 'createdBy', 'updatedBy')->paginate($limit);
+        $galleries = new Categories();
+        if ($id){
+            $galleries = $galleries->where('category_id',$id);
+        }
+        $galleries = $galleries->with('parent', 'createdBy', 'updatedBy')->paginate($limit);
         $galleries->appends(['limit' => $limit]);
         return $this->setStatusCode(200)
             ->respond(['galleries' => $this->transformCollection(collect($galleries->all()))
