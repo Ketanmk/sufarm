@@ -18,7 +18,7 @@
             {{Form::text('name',null,['class'=>'form-control','placeholder'=>"Name"])}}
 
         </div>
-        @if(!$photo)
+        @if(!isset($photo))
             <div class="row">
                 <div class="col-lg-12">
                     <label>Photo:</label>

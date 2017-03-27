@@ -13,6 +13,15 @@
                     </a>
                     <ul class="dropdown-menu animated fadeInRight m-t-xs">
                         <li>
+                            <a  data-toggle="modal" href="#modal-form"
+                               data-href='{{route('users.edit',\Illuminate\Support\Facades\Auth::user()->id)}}'>Change Profile</a>
+                        </li>
+                        <li>
+                            <a data-toggle="modal" href="#modal-form"
+                               data-href='{{route('users.editmypassword',\Illuminate\Support\Facades\Auth::user()->id)}}'>Change
+                                Password</a>
+                        </li>
+                        <li>
                             <a href="{{ url('/logout') }}"
                                onclick="event.preventDefault();
                 document.getElementById('logout-form').submit();">{{trans('navigation.logout')}}</a>
@@ -24,12 +33,19 @@
                 </div>
             </li>
             <li class="{{ isActiveRoute('categories.index') }}">
-                <a href="{{ url('/categories') }}"><i class="fa fa-th-large"></i> <span class="nav-label">Galleries</span></a>
+                <a href="{{ url('/categories') }}"><i class="fa fa-th-large"></i> <span
+                            class="nav-label">Galleries</span></a>
             </li>
             <li class="{{ isActiveRoute('photos.index') }}">
                 <a href="{{ url('/photos') }}"><i class="fa fa-th-large"></i> <span
                             class="nav-label">Photos</span></a>
             </li>
+            @if(\Illuminate\Support\Facades\Auth::user()->type == \App\Utilities\Constants::USERTYPES['SuperAdmin'])
+                <li class="{{ isActiveRoute('users.index') }}">
+                    <a href="{{ url('/users') }}"><i class="fa fa-th-large"></i> <span
+                                class="nav-label">Manage Users</span></a>
+                </li>
+            @endif
 
         </ul>
 

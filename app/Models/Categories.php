@@ -52,4 +52,9 @@ class Categories extends BaseModel
     {
         return $this->belongsTo(User::class, 'updated_by');
     }
+
+    public function scopeActive($query)
+    {
+        return $query->where('status',1);
+    }
 }

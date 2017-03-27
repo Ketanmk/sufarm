@@ -13,6 +13,15 @@
                     </a>
                     <ul class="dropdown-menu animated fadeInRight m-t-xs">
                         <li>
+                            <a  data-toggle="modal" href="#modal-form"
+                               data-href='<?php echo e(route('users.edit',\Illuminate\Support\Facades\Auth::user()->id)); ?>'>Change Profile</a>
+                        </li>
+                        <li>
+                            <a data-toggle="modal" href="#modal-form"
+                               data-href='<?php echo e(route('users.editmypassword',\Illuminate\Support\Facades\Auth::user()->id)); ?>'>Change
+                                Password</a>
+                        </li>
+                        <li>
                             <a href="<?php echo e(url('/logout')); ?>"
                                onclick="event.preventDefault();
                 document.getElementById('logout-form').submit();"><?php echo e(trans('navigation.logout')); ?></a>
@@ -24,12 +33,19 @@
                 </div>
             </li>
             <li class="<?php echo e(isActiveRoute('categories.index')); ?>">
-                <a href="<?php echo e(url('/categories')); ?>"><i class="fa fa-th-large"></i> <span class="nav-label">Galleries</span></a>
+                <a href="<?php echo e(url('/categories')); ?>"><i class="fa fa-th-large"></i> <span
+                            class="nav-label">Galleries</span></a>
             </li>
             <li class="<?php echo e(isActiveRoute('photos.index')); ?>">
                 <a href="<?php echo e(url('/photos')); ?>"><i class="fa fa-th-large"></i> <span
                             class="nav-label">Photos</span></a>
             </li>
+            <?php if(\Illuminate\Support\Facades\Auth::user()->type == \App\Utilities\Constants::USERTYPES['SuperAdmin']): ?>
+                <li class="<?php echo e(isActiveRoute('users.index')); ?>">
+                    <a href="<?php echo e(url('/users')); ?>"><i class="fa fa-th-large"></i> <span
+                                class="nav-label">Manage Users</span></a>
+                </li>
+            <?php endif; ?>
 
         </ul>
 
