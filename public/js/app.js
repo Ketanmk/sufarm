@@ -2878,5 +2878,3 @@ function SmoothlyMenu() {
         $('#side-menu').removeAttr('style');
     }
 }
-
-//# sourceMappingURL=app.js.map

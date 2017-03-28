@@ -17,6 +17,7 @@ elixir(function (mix) {
     mix.copy('resources/assets/vendor/font-awesome/fonts', 'public/fonts');
     mix.copy('resources/assets/vendor/css/plugins/jasny', 'public/css/plugins/jasny');
     mix.copy('resources/assets/vendor/plugins/jasny', 'public/js/plugins/jasny');
+    mix.copy('resources/assets/js/components', 'public/js/components');
     mix.styles([
         'resources/assets/vendor/bootstrap/css/bootstrap.css',
         'resources/assets/vendor/animate/animate.css',
@@ -34,6 +35,7 @@ elixir(function (mix) {
         'resources/assets/vendor/plugins/toastr/toastr.min.js',
         'resources/assets/vendor/plugins/bsconf/bootstrap-confirmation.min.js',
         'resources/assets/vendor/plugins/iCheck/icheck.min.js',
+
         'resources/assets/js/app.js'
     ], 'public/js/app.js', './');
 
