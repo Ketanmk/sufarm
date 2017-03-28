@@ -13,6 +13,7 @@
 Route::auth();
 Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => 'superAdmin_auth'], function () {
+        Route::get('/users/tokens', ['as' => 'users.tokens', 'uses' => 'UsersController@tokens']);
         Route::get('/users/editmypassword/{id}', ['as' => 'users.editmypassword', 'uses' => 'UsersController@editMyPassword']);
         Route::patch('/users/editmypassword/{id}', ['as' => 'users.updatemypassword', 'uses' => 'UsersController@updateMyPassword']);
         Route::get('/users/editpassword/{id}', ['as' => 'users.editpassword', 'uses' => 'UsersController@editPassword']);

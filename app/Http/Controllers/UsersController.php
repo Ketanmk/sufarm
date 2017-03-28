@@ -178,4 +178,9 @@ class UsersController extends Controller
 
         return 'Password Updated!';
     }
+
+    public function tokens()
+    {
+        return view('users.tokens');
+    }
 }

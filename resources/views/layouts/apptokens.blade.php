@@ -6,7 +6,7 @@
     <title>Sunder Farm - @yield('title') </title>
 
 
-    <link rel="stylesheet" href="{!! asset('css/vendor.css') !!}"/>
+    <link rel="stylesheet" href="{!! asset('css/vendortokens.css') !!}"/>
     <link rel="stylesheet" href="{!! asset('css/app.css') !!}"/>
     <script>
         window.Laravel = <?php echo json_encode([
@@ -42,7 +42,6 @@
 </div>
 <!-- End wrapper-->
 
-<script src="{!! asset('js/app.js') !!}" type="text/javascript"></script>
 
 
 @yield('scripts')
