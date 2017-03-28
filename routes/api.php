@@ -15,7 +15,7 @@ use Illuminate\Http\Request;
 
 Route::get('/user', function (Request $request) {
     return '123';
-})->middleware('auth.basic');
+})->middleware('auth:api');
 Route::group(['prefix' => 'v1', 'middleware' => 'auth.basic'], function () {
     Route::get('/galleries/{id}/photos', 'ApiPhotosController@index');
     Route::resource('/galleries', 'ApiGalleryController');
