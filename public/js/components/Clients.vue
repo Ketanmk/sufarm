@@ -271,7 +271,7 @@
              * Get all of the OAuth clients for the user.
              */
             getClients() {
-                axios.get('/oauth/clients')
+                axios.get('/sunder/public/oauth/clients')
                         .then(response => {
                             this.clients = response.data;
                         });
@@ -289,7 +289,7 @@
              */
             store() {
                 this.persistClient(
-                    'post', '/oauth/clients',
+                    'post', '/sunder/public/oauth/clients',
                     this.createForm, '#modal-create-client'
                 );
             },
@@ -310,7 +310,7 @@
              */
             update() {
                 this.persistClient(
-                    'put', '/oauth/clients/' + this.editForm.id,
+                    'put', '/sunder/public/oauth/clients/' + this.editForm.id,
                     this.editForm, '#modal-edit-client'
                 );
             },
@@ -344,7 +344,7 @@
              * Destroy the given client.
              */
             destroy(client) {
-                axios.delete('/oauth/clients/' + client.id)
+                axios.delete('/sunder/public/oauth/clients/' + client.id)
                         .then(response => {
                             this.getClients();
                         });
