@@ -12,11 +12,10 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
 Route::get('/user', function (Request $request) {
     return '123';
 })->middleware('auth:api');
-Route::group(['prefix' => 'v1', 'middleware' => 'auth:api'], function () {
+Route::group(['prefix' => 'v1', 'middleware' =>  'auth.basic'], function () {
     Route::get('/galleries/{id}/photos', 'ApiPhotosController@index');
     Route::resource('/galleries', 'ApiGalleryController');
     Route::get('/galleries/{id}/galleries', 'ApiGalleryController@index');

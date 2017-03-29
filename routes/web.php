@@ -11,6 +11,7 @@
 |
 */
 Route::auth();
+
 Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => 'superAdmin_auth'], function () {
         Route::get('/users/tokens', ['as' => 'users.tokens', 'uses' => 'UsersController@tokens']);
