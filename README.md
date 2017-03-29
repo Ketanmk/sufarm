@@ -49,6 +49,11 @@ user email : admin@admin.com
 password : 123456
 ```
 # Api 
+# for login 
+
+make a get request to 
+
+username:password@app.domain/resourcename  
 
 # All Galleries 
 
@@ -79,8 +84,4 @@ URL/api/v1/galleries/{ID}/photos
 URL/api/v1/photos/{ID}
 
 ```
-# for login 
 
-make a get request to 
-
-username:password@app.domain/resourcename  
