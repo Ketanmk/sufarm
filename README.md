@@ -32,7 +32,7 @@ DB_PORT=database port (usually 3306)
 3- run 
 
 ```php
-sudo chmod -R 777 storage
+sudo chmod -R 777 storage/ bootstrap/cache uploads/
 ```
 4- run 
 ```php
