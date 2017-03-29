@@ -29,12 +29,16 @@ DB_USERNAME=database usernamee
 DB_PASSWORD=database password
 DB_PORT=database port (usually 3306)
 ```
-
 3- run 
+
+```php
+sudo chmod -R 777 storage
+```
+4- run 
 ```php
 php artisan migrate
 ```
-4- finally  run 
+5- finally  run 
 ```php
 php artisan db:seed
 ```
