@@ -84,18 +84,3 @@ URL/api/v1/photos/{ID}
 make a get request to 
 
 username:password@app.domain/resourcename  
-
-Open Administrator area 
- 
- Go to User TOkens create new access token
-  
- copy it
-  
-  if you need to use it from postman 
-  
-  add Authorization: to headers 
-  
-  ```php
-Authorization: Bearer token 
-```
-Have Fun :) :) 
