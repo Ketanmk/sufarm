@@ -81,6 +81,10 @@ URL/api/v1/photos/{ID}
 ```
 # for login 
 
+make a get request to 
+
+username:password@app.domain/resourcename  
+
 Open Administrator area 
  
  Go to User TOkens create new access token
