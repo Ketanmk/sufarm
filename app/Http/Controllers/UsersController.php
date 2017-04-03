@@ -19,7 +19,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = User::notMe()->orderBy('type')->get();
+        $users = User::orderBy('type')->get();
         return view('users.index', compact('users'));
     }
 
