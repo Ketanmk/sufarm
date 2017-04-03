@@ -45,10 +45,10 @@
                     <a href="{{ url('/users') }}"><i class="fa fa-th-large"></i> <span
                                 class="nav-label">Manage Users</span></a>
                 </li>
-                <li class="{{ isActiveRoute('users.tokens') }}">
+                {{-- <li class="{{ isActiveRoute('users.tokens') }}">
                     <a href="{{ url('/users/tokens') }}"><i class="fa fa-th-large"></i> <span
                                 class="nav-label">User Tokens</span></a>
-                </li>
+                </li> --}}
             @endif
 
         </ul>
