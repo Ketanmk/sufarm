@@ -125,7 +125,7 @@
 
 
                                 </tbody>
-                                <tfoot>
+                                {{-- <tfoot>
                                 <tr>
                                     <th width="5%">#</th>
                                     <th>Name</th>
@@ -135,7 +135,7 @@
                                     <th width="5%">{{trans('main.titles.status')}}</th>
                                     <th width="20%">{{trans('main.titles.actions')}}</th>
                                 </tr>
-                                </tfoot>
+                                </tfoot> --}}
                             </table>
                         </div>
 
