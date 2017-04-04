@@ -12,12 +12,23 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
  */
-Route::get('/user', function (Request $request) {
-    return '123';
-})->middleware('auth:api');
-Route::group(['prefix' => 'v1', 'middleware' => 'auth.basic'], function () {
-    Route::get('/galleries/{id}/photos', 'ApiPhotosController@index');
-    Route::resource('/galleries', 'ApiGalleryController');
-    // Route::get('/galleries/{id}/galleries', 'ApiGalleryController@index');
-    Route::resource('/photos', 'ApiPhotosController');
+
+Route::group(['prefix' => 'v1', 'namespace' => 'Api'], function () {
+
+    Route::group(['middleware' => 'auth:api'], function () {
+        Route::get('/me', function (Request $request) {
+            return $request->user();
+        });
+        Route::post('/reset', [
+            'uses' => 'AuthController@reset',
+        ]);
+        Route::get('/galleries/{id}/photos', 'PhotosController@index');
+        Route::resource('/galleries', 'GalleryController');
+        Route::resource('/photos', 'PhotosController');
+    });
+    Route::group(['middleware' => 'guest'], function () {
+        Route::post('/authenticate', [
+            'uses' => 'AuthController@authenticate',
+        ]);
+    });
 });

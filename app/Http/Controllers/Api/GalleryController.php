@@ -1,29 +1,29 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use App\Models\Categories;
 use Illuminate\Http\Request;
 
-class ApiGalleryController extends ApiController
+class GalleryController extends ApiController
 {
     public function index($id = '')
     {
-        $limit = request('limit') ?: 10;
+        $limit     = request('limit') ?: 10;
         $galleries = new Categories();
-        if ($id){
-            $galleries = $galleries->where('category_id',$id);
+        if ($id) {
+            $galleries = $galleries->where('category_id', $id);
         }
         $galleries = $galleries->with('parent', 'createdBy', 'updatedBy')->paginate($limit);
         $galleries->appends(['limit' => $limit]);
         return $this->setStatusCode(200)
-            ->respond(['galleries' => $this->transformCollection(collect($galleries->all()))
+            ->respond(['data' => $this->transformCollection(collect($galleries->all()))
                 , 'paginator' => [
-                    'total_count' => $galleries->total(),
+                    'total_count'  => $galleries->total(),
                     'current_page' => $galleries->currentPage(),
-                    'next_page' => $galleries->nextPageUrl(),
-                    'prev_page' => $galleries->previousPageUrl(),
-                    'total_pages' => ceil($galleries->total() / $galleries->perPage()),
+                    'next_page'    => $galleries->nextPageUrl(),
+                    'prev_page'    => $galleries->previousPageUrl(),
+                    'total_pages'  => ceil($galleries->total() / $galleries->perPage()),
                 ]]);
     }
 
@@ -43,11 +43,11 @@ class ApiGalleryController extends ApiController
     private function transform($galleries)
     {
         return [
-            'id' => $galleries['id'],
-            'title' => $galleries['name'],
+            'id'           => $galleries['id'],
+            'title'        => $galleries['name'],
             'main_gallery' => $galleries['parent']['name'],
-            'created_by' => $galleries['created_by']['name'],
-            'active' => (boolean)$galleries['status']
+            'created_by'   => $galleries['created_by']['name'],
+            'active'       => (boolean) $galleries['status'],
         ];
     }
 }

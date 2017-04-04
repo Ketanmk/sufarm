@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 
 class ApiController extends Controller
 {
     protected $statusCode = 200;
-
 
     /**
      * @return mixed
@@ -52,9 +52,9 @@ class ApiController extends Controller
     {
         return $this->respond([
             'error' => [
-                'message' => $message,
-                'status_code' => $this->getStatusCode()
-            ]
+                'message'     => $message,
+                'status_code' => $this->getStatusCode(),
+            ],
         ]);
     }
 }
