@@ -51,9 +51,22 @@ password : 123456
 # Api 
 # for login 
 
-make a get request to 
+URL/api/v1/authenticate
 
-username:password@app.domain/resourcename  
+submit a post request with the user email and password
+
+if email and password is correct it will return a 60 character length string
+and you can use that string on accessing the api resources listed below.
+
+two ways to use token to access resources:
+1. via headers, Authorization: Bearer 60_length_token_string
+2. via query string, URL/api/v1/galleries?api_token=60_length_token_string
+
+# Reset Token
+
+URL/api/v1/reset
+
+it will return a new token and the old token will be discarded
 
 # All Galleries 
 
