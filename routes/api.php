@@ -26,8 +26,8 @@ Route::group(['prefix' => 'v1', 'namespace' => 'Api'], function () {
         Route::resource('/galleries', 'GalleryController');
         Route::resource('/photos', 'PhotosController');
     });
-    Route::group(['middleware' => 'guest'], function () {
-        Route::post('/authenticate', [
+    Route::group(['middleware' => 'guest:api'], function () {
+        Route::match(['get', 'post'], '/authenticate', [
             'uses' => 'AuthController@authenticate',
         ]);
     });
