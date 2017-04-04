@@ -2,10 +2,10 @@
 
 namespace App;
 
-use Laravel\Passport\HasApiTokens;
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
+use Laravel\Passport\HasApiTokens;
 
 class User extends Authenticatable
 {
@@ -17,7 +17,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'created_by', 'updated_by', 'status', 'type'
+        'name', 'email', 'password', 'created_by', 'updated_by', 'status', 'type',
+        'api_token',
     ];
 
     public static function boot()
@@ -33,10 +34,14 @@ class User extends Authenticatable
         static::creating(function ($model) use ($user_id) {
             $model->created_by = $user_id;
             $model->updated_by = $user_id;
+            $model->api_token  = str_random(60);
         });
 
         static::updating(function ($model) use ($user_id) {
             $model->updated_by = $user_id;
+            if (!$model->api_token) {
+                $model->api_token = str_random(60);
+            }
         });
     }
 
@@ -46,7 +51,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token', 'api_token',
     ];
 
     public function createdBy()

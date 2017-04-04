@@ -41,8 +41,8 @@ class CategoriesController extends BaseController
     public function store(CategoriesRequest $request)
     {
         $category = Categories::create([
-            'name' => $request->name,
-            'category_id' => ($request->category_id) ? $request->category_id : NULL,
+            'name'        => $request->name,
+            'category_id' => ($request->category_id) ? $request->category_id : null,
         ]);
 
         return 'Gallery Created!!';
@@ -68,7 +68,7 @@ class CategoriesController extends BaseController
     public function edit($id)
     {
         $categories = Categories::where('id', '<>', $id)->get()->pluck('name', 'id');
-        $category = Categories::find($id);
+        $category   = Categories::find($id);
         return view('categories.create', compact('categories', 'category'));
     }
 
@@ -83,8 +83,8 @@ class CategoriesController extends BaseController
     {
         $category = Categories::find($id);
         $category->update([
-            'name' => $request->name,
-            'category_id' => ($request->category_id) ? $request->category_id : NULL,
+            'name'        => $request->name,
+            'category_id' => ($request->category_id) ? $request->category_id : null,
         ]);
 
         return 'Gallery Updated!!';
@@ -98,7 +98,7 @@ class CategoriesController extends BaseController
      */
     public function destroy($id)
     {
-        $category = Categories::with('child','photos')->find($id);
+        $category = Categories::with('child', 'photos')->find($id);
         if (count($category->child) > 0) {
             return 'you can\'t delete this gallery you should delete child galleries first';
         }
@@ -116,7 +116,6 @@ class CategoriesController extends BaseController
     {
         $category = Categories::findOrFail($id);
 
-
         $category->status = 1;
         $category->save();
 
@@ -126,7 +125,6 @@ class CategoriesController extends BaseController
     public function deactivate($id)
     {
         $category = Categories::findOrFail($id);
-
 
         $category->status = 0;
         $category->save();

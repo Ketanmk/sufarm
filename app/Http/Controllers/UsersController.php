@@ -19,7 +19,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = User::notMe()->get();
+        $users = User::orderBy('type')->get();
         return view('users.index', compact('users'));
     }
 
@@ -43,11 +43,11 @@ class UsersController extends Controller
     {
         $user = User::create(
             [
-                'name' => $request->name,
-                'email' => $request->email,
+                'name'     => $request->name,
+                'email'    => $request->email,
                 'password' => bcrypt($request->password),
-                'status' => 1,
-                'type' => Constants::USERTYPES['Admin']
+                'status'   => 1,
+                'type'     => Constants::USERTYPES['Admin'],
             ]
         );
         return 'User Created!!';
@@ -87,12 +87,12 @@ class UsersController extends Controller
     public function updatePassword(Request $request, $id)
     {
         $this->validate($request, [
-            'password' => 'required|min:3|confirmed'
+            'password' => 'required|min:3|confirmed',
         ]);
         $user = User::find($id);
 
         $user->update([
-            'password' => bcrypt($request->password)
+            'password' => bcrypt($request->password),
         ]);
 
         return 'Password Updated!';
@@ -110,8 +110,8 @@ class UsersController extends Controller
         $user = User::find($id);
 
         $user->update([
-            'name' => $request->name,
-            'email' => $request->email
+            'name'  => $request->name,
+            'email' => $request->email,
         ]);
 
         return 'Updated !';
@@ -138,7 +138,6 @@ class UsersController extends Controller
     {
         $user = User::findOrFail($id);
 
-
         $user->status = 1;
         $user->save();
 
@@ -148,7 +147,6 @@ class UsersController extends Controller
     public function deactivate($id)
     {
         $user = User::findOrFail($id);
-
 
         $user->status = 0;
         $user->save();
@@ -165,15 +163,15 @@ class UsersController extends Controller
     public function updateMyPassword(Request $request, $id)
     {
         if (!Hash::check($request->oldpassword, Auth::user()->password)) {
-            return response()->json(['error'=>'Old password don\'t match database'],422);
+            return response()->json(['error' => 'Old password don\'t match database'], 422);
         }
         $this->validate($request, [
-            'password' => 'required|min:3|confirmed'
+            'password' => 'required|min:3|confirmed',
         ]);
         $user = User::find($id);
 
         $user->update([
-            'password' => bcrypt($request->password)
+            'password' => bcrypt($request->password),
         ]);
 
         return 'Password Updated!';
