@@ -49,7 +49,10 @@ user email : admin@admin.com
 password : 123456
 ```
 # Api 
-# for login 
+# for login
+
+
+![](docs/Selection_001.png)
 
 URL/api/v1/authenticate
 
@@ -57,16 +60,26 @@ submit a post request with the user email and password
 
 if email and password is correct it will return a 60 character length string
 and you can use that string on accessing the api resources listed below.
+![](docs/Selection_002.png)
+
+if email and password is incorrent
+![](docs/Selection_003.png)
+
+if invalid token was used
+![](docs/Selection_006.png)
 
 two ways to use token to access resources:
 1. via headers, Authorization: Bearer 60_length_token_string
+![](docs/Selection_005.png)
 2. via query string, URL/api/v1/galleries?api_token=60_length_token_string
+![](docs/Selection_004.png)
 
 # Reset Token
 
 URL/api/v1/reset
 
 it will return a new token and the old token will be discarded
+![](docs/Selection_007.png)
 
 # All Galleries 
 
@@ -97,4 +110,3 @@ URL/api/v1/galleries/{ID}/photos
 URL/api/v1/photos/{ID}
 
 ```
-
