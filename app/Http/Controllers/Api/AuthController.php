@@ -9,15 +9,6 @@ class AuthController extends Controller
 {
     public function authenticate(Request $request)
     {
-        if ($request->isMethod('get')) {
-            return response()->json([
-                'error' => [
-                    'message'     => 'Method Not Allowed',
-                    'status_code' => 405,
-                ],
-            ]);
-        }
-
         $this->validate($request, [
             'email'    => 'required|email',
             'password' => 'required',
