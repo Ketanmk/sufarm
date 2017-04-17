@@ -17,7 +17,7 @@ class PhotosController extends ApiController
             $photos = $photos->where('category_id', $id);
         }
 
-        $photos = $photos->with('category', 'createdBy', 'updatedBy')->paginate($limit);
+        $photos = $photos->orderBy('created_at')->with('category', 'createdBy', 'updatedBy')->paginate($limit);
         $photos->appends(['limit' => $limit]);
         return $this->setStatusCode(200)
             ->respond(['data' => $this->transformCollection(collect($photos->all()))
@@ -52,6 +52,7 @@ class PhotosController extends ApiController
             'main_gallery' => $photos['category']['name'],
             'created_by'   => $photos['created_by']['name'],
             'active'       => (boolean) $photos['status'],
+            'created'      => $photos['created_at_timestamp'],
         ];
     }
 }

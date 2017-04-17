@@ -4,12 +4,13 @@ namespace App\Models;
 
 use App\BaseModel;
 use App\User;
-use Illuminate\Database\Eloquent\Model;
 
 class Categories extends BaseModel
 {
-    protected $table = 'categories';
-
+    protected $table   = 'categories';
+    protected $appends = [
+        'created_at_timestamp',
+    ];
     /**
      *
      */
@@ -55,6 +56,11 @@ class Categories extends BaseModel
 
     public function scopeActive($query)
     {
-        return $query->where('status',1);
+        return $query->where('status', 1);
+    }
+
+    public function getCreatedAtTimestampAttribute()
+    {
+        return $this->created_at->timestamp;
     }
 }
