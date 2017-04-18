@@ -14,7 +14,7 @@ class GalleryController extends ApiController
         if ($id) {
             $galleries = $galleries->where('category_id', $id);
         }
-        $galleries = $galleries->with('parent', 'createdBy', 'updatedBy')->paginate($limit);
+        $galleries = $galleries->orderBy('created_at')->with('parent', 'createdBy', 'updatedBy')->paginate($limit);
         $galleries->appends(['limit' => $limit]);
         return $this->setStatusCode(200)
             ->respond(['data' => $this->transformCollection(collect($galleries->all()))
@@ -48,6 +48,7 @@ class GalleryController extends ApiController
             'main_gallery' => $galleries['parent']['name'],
             'created_by'   => $galleries['created_by']['name'],
             'active'       => (boolean) $galleries['status'],
+            'created'      => $galleries['created_at_timestamp'],
         ];
     }
 }

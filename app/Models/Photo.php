@@ -7,6 +7,10 @@ use App\User;
 
 class Photo extends BaseModel
 {
+    protected $appends = [
+        'created_at_timestamp',
+    ];
+
     public static function boot()
     {
         parent::boot();
@@ -29,5 +33,10 @@ class Photo extends BaseModel
     public function updatedBy()
     {
         return $this->belongsTo(User::class, 'updated_by');
+    }
+
+    public function getCreatedAtTimestampAttribute()
+    {
+        return $this->created_at->timestamp;
     }
 }
