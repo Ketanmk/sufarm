@@ -40,6 +40,10 @@
                 <a href="{{ url('/photos') }}"><i class="fa fa-th-large"></i> <span
                             class="nav-label">Photos</span></a>
             </li>
+            <li class="{{ isActiveRoute('product-types.index') }}">
+                <a href="{{ url('/product-types') }}"><i class="fa fa-th-large"></i> <span
+                            class="nav-label">Product types</span></a>
+            </li>
             @if(\Illuminate\Support\Facades\Auth::user()->type == \App\Utilities\Constants::USERTYPES['SuperAdmin'])
                 <li class="{{ isActiveRoute('users.index') }}">
                     <a href="{{ url('/users') }}"><i class="fa fa-th-large"></i> <span
