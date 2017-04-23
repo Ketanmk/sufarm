@@ -30,6 +30,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::delete('/photos/deactivate/{id}', ['as' => 'photos.deactivate', 'uses' => 'PhotosController@deactivate']);
     Route::resource('/photos', "PhotosController");
     Route::resource('/production','ProductionController');
+    Route::resource('/product-types', 'ProductTypesController');
+    Route::resource('/products', 'ProductsController');
     Route::get('/', 'HomeController@index')->name("main");
     Route::get('/minor', 'HomeController@minor')->name("minor");
 });

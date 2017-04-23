@@ -13,8 +13,9 @@
                     </a>
                     <ul class="dropdown-menu animated fadeInRight m-t-xs">
                         <li>
-                            <a  data-toggle="modal" href="#modal-form"
-                               data-href='{{route('users.edit',\Illuminate\Support\Facades\Auth::user()->id)}}'>Change Profile</a>
+                            <a data-toggle="modal" href="#modal-form"
+                               data-href='{{route('users.edit',\Illuminate\Support\Facades\Auth::user()->id)}}'>Change
+                                Profile</a>
                         </li>
                         <li>
                             <a data-toggle="modal" href="#modal-form"
@@ -43,6 +44,13 @@
             <li class="{{ isActiveRoute('production.index') }}">
                 <a href="{{ url('/production') }}"><i class="fa fa-th-large"></i> <span
                             class="nav-label"> Production Data</span></a>
+            <li class="{{ isActiveRoute('product-types.index') }}">
+                <a href="{{ url('/product-types') }}"><i class="fa fa-th-large"></i> <span
+                            class="nav-label">Product types Master</span></a>
+            </li>
+            <li class="{{ isActiveRoute('products.index') }}">
+                <a href="{{ url('/products') }}"><i class="fa fa-th-large"></i>
+                    <span class="nav-label">Products master</span></a>
             </li>
             @if(\Illuminate\Support\Facades\Auth::user()->type == \App\Utilities\Constants::USERTYPES['SuperAdmin'])
                 <li class="{{ isActiveRoute('users.index') }}">
