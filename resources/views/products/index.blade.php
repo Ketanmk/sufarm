@@ -1,18 +1,18 @@
 @extends('layouts.app')
 
-@section('title', 'Product Types')
+@section('title', 'Products Master')
 
 @section('content')
     <div class="row wrapper border-bottom white-bg page-heading">
         <div class="col-lg-10">
-            <h2>Product Types</h2>
+            <h2>Products Master</h2>
             <ol class="breadcrumb">
                 <li>
                     <a href="{{url('/')}}">Home</a>
                 </li>
 
                 <li class="active">
-                    <strong>Product Types</strong>
+                    <strong>Products Master</strong>
                 </li>
             </ol>
         </div>
@@ -31,11 +31,11 @@
             <div class="col-lg-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5>Here you can manage Product Types</h5>
+                        <h5>Here you can manage Products</h5>
                         <div class="ibox-tools">
 
                             <a data-toggle="modal" class="btn btn-primary" href="#modal-form"
-                               data-href='{{route('product-types.create')}}'>
+                               data-href='{{route('products.create')}}'>
                                 Create<i class="fa fa-plus" aria-hidden="true"></i>
                             </a>
                             <a class="collapse-link">
@@ -49,24 +49,26 @@
                             <table class="table table-striped table-bordered table-hover dataTables-example">
                                 <thead>
                                 <tr>
-                                    <th width="5%">#Sr.No</th>
-                                    <th>Product Type Name</th>
+                                    <th width="5%">#</th>
+                                    <th>product Name</th>
+                                    <th>product type</th>
                                     <th width="20%">{{trans('main.titles.actions')}}</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($productTypes as $productType)
+                                @foreach($products as $product)
                                     <tr class="gradeX">
                                         <td>{{$loop->iteration}}</td>
-                                        <td>{{$productType->name}}</td>
+                                        <td>{{$product->name}}</td>
+                                        <td>{{$product->productTypes->name}}</td>
                                         <td class="center">
                                             <a data-toggle="modal" class="btn btn-primary" href="#modal-form"
-                                               data-href='{{route('product-types.edit',$productType->id)}}'><i
+                                               data-href='{{route('products.edit',$product->id)}}'><i
                                                         class="fa fa-pencil-square-o"
                                                         aria-hidden="true"></i> </a>
                                             <a data-popout="true" data-token='{{ csrf_token()}}'
-                                               data-hreff='{{route('product-types.destroy',$productType->id)}}'
-                                               data-url='{{route('product-types.index')}}' data-id='{{$productType->id}}'
+                                               data-hreff='{{route('products.destroy',$product->id)}}'
+                                               data-url='{{route('products.index')}}' data-id='{{$product->id}}'
                                                class="btn btn-danger red-mint delete-ajax"
                                                data-toggle="confirmation"
                                                data-original-title="{{trans('main.labels.delete_confirmation_message') }}"
@@ -81,17 +83,7 @@
 
 
                                 </tbody>
-                                {{-- <tfoot>
-                                <tr>
-                                    <th width="5%">#</th>
-                                    <th>Gallery Name</th>
-                                    <th>Main Gallery</th>
-                                    <th>Created By</th>
-                                    <th>Last Updated By</th>
-                                    <th width="5%">{{trans('main.titles.status')}}</th>
-                                    <th width="20%">{{trans('main.titles.actions')}}</th>
-                                </tr>
-                                </tfoot> --}}
+
                             </table>
                         </div>
 
