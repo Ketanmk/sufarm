@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProductionDataRequest;
+use App\Models\Product;
 use App\Models\Production;
+use App\Models\ProductType;
 use Illuminate\Http\Request;
 
 class ProductionController extends Controller
@@ -27,7 +29,10 @@ class ProductionController extends Controller
      */
     public function create()
     {
-        return view('production.create');
+        $products = Product::all()->pluck('name', 'id');
+        $productTypes = ProductType::all()->pluck('name', 'id');
+
+        return view('production.create', compact('products', 'productTypes'));
     }
 
     /**
@@ -40,8 +45,8 @@ class ProductionController extends Controller
     {
         $productionData = Production::create([
             'date' => $request->date,
-            'product_name' => $request->product_name,
-            'product_type' => $request->product_type,
+            'product_id' => $request->product_id,
+            'product_type_id' => $request->product_type_id,
             'quantity_produced' => $request->quantity_produced
         ]);
 
@@ -70,8 +75,10 @@ class ProductionController extends Controller
     public function edit($id)
     {
         $productionData = Production::find($id);
+        $products = Product::all()->pluck('name', 'id');
+        $productTypes = ProductType::all()->pluck('name', 'id');
 
-        return view('production.create', compact('productionData'));
+        return view('production.create', compact('productionData', 'products', 'productTypes'));
     }
 
     /**
@@ -87,8 +94,8 @@ class ProductionController extends Controller
 
         $productionData->update([
             'date' => $request->date,
-            'product_name' => $request->product_name,
-            'product_type' => $request->product_type,
+            'product_id' => $request->product_id,
+            'product_type_id' => $request->product_type_id,
             'quantity_produced' => $request->quantity_produced
         ]);
 

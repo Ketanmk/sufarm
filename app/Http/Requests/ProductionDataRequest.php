@@ -24,10 +24,18 @@ class ProductionDataRequest extends FormRequest
     public function rules()
     {
         return [
-            'date'=>'required|date',
-            'product_name'=>'required',
-            'product_type'=>'required',
-            'quantity_produced'=>'required'
+            'date' => 'required|date',
+            'product_id' => 'required',
+            'product_type_id' => 'required',
+            'quantity_produced' => 'required'
+        ];
+    }
+
+    public function attributes()
+    {
+        return [
+            'product_id' => 'Product',
+            'product_type_id' => 'Product Type'
         ];
     }
 }

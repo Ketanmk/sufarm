@@ -19,11 +19,11 @@
         </div>
 
         <div class="form-group"><label>Product Name</label>
-            {{Form::text('product_name',null,['class'=>'form-control','placeholder'=>"Product Name"])}}
+            {{Form::select('product_id',$products,null,['class'=>'form-control','placeholder'=>"Product Name"])}}
         </div>
 
         <div class="form-group"><label>Product type</label>
-            {{Form::text('product_type',null,['class'=>'form-control','placeholder'=>"Product type"])}}
+            {{Form::select('product_type_id',$productTypes,null,['class'=>'form-control','placeholder'=>"Product type"])}}
 
         </div>
 

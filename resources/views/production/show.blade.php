@@ -13,12 +13,12 @@
     </div>
     <div class="row">
         <div class="form-group"><label>Product Name : </label>
-            {{$productionDate->product_name or ''}}
+            {{$productionDate->product->name or ''}}
         </div>
     </div>
     <div class="row">
         <div class="form-group"><label>Product type : </label>
-            {{$productionDate->product_type or ''}}
+            {{$productionDate->productType->name or ''}}
         </div>
     </div>
     <div class="row">

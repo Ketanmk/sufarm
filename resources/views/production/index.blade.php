@@ -65,8 +65,8 @@
                                     <tr class="gradeX">
                                         <td>{{$loop->iteration}}</td>
                                         <td>{{$productionDatum->date}}</td>
-                                        <td>{{$productionDatum->product_name}}</td>
-                                        <td>{{$productionDatum->product_type}}</td>
+                                        <td>{{$productionDatum->product->name}}</td>
+                                        <td>{{$productionDatum->productType->name}}</td>
                                         <td>{{$productionDatum->quantity_produced}}</td>
                                         <td class="center">
                                             <a data-toggle="modal" class="btn btn-primary"

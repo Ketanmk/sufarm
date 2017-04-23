@@ -16,8 +16,8 @@ class CreateProductionDataTable extends Migration
         Schema::create('production_data', function (Blueprint $table) {
             $table->increments('id');
             $table->date('date');
-            $table->text('product_name');
-            $table->text('product_type');
+            $table->integer('product_id')->unsigned();
+            $table->integer('product_type_id')->unsigned();
             $table->integer('quantity_produced');
             $table->integer('created_by')->unsigned()->nullable();
             $table->integer('updated_by')->unsigned()->nullable();
