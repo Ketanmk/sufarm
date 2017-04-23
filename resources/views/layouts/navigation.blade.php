@@ -41,6 +41,9 @@
                 <a href="{{ url('/photos') }}"><i class="fa fa-th-large"></i> <span
                             class="nav-label">Photos</span></a>
             </li>
+            <li class="{{ isActiveRoute('production.index') }}">
+                <a href="{{ url('/production') }}"><i class="fa fa-th-large"></i> <span
+                            class="nav-label"> Production Data</span></a>
             <li class="{{ isActiveRoute('product-types.index') }}">
                 <a href="{{ url('/product-types') }}"><i class="fa fa-th-large"></i> <span
                             class="nav-label">Product types Master</span></a>
