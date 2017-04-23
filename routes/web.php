@@ -29,6 +29,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::delete('/photos/activate/{id}', ['as' => 'photos.activate', 'uses' => 'PhotosController@activate']);
     Route::delete('/photos/deactivate/{id}', ['as' => 'photos.deactivate', 'uses' => 'PhotosController@deactivate']);
     Route::resource('/photos', "PhotosController");
+    Route::resource('/product-types', 'ProductTypesController');
+    Route::resource('/products', 'ProductsController');
     Route::get('/', 'HomeController@index')->name("main");
     Route::get('/minor', 'HomeController@minor')->name("minor");
 });
