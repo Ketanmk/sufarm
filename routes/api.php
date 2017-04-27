@@ -25,6 +25,7 @@ Route::group(['prefix' => 'v1', 'namespace' => 'Api'], function () {
         Route::get('/galleries/{id}/photos', 'PhotosController@index');
         Route::resource('/galleries', 'GalleryController');
         Route::resource('/photos', 'PhotosController');
+        Route::resource('/products', 'ProductController');
     });
     Route::group(['middleware' => 'guest:api'], function () {
         Route::post('/authenticate', [
