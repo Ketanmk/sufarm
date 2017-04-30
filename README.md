@@ -110,3 +110,27 @@ URL/api/v1/galleries/{ID}/photos
 URL/api/v1/photos/{ID}
 
 ```
+
+
+to make a product request you need to go 
+v1/api/products
+
+if you need to fetch some accurate date 
+
+v1/api/products?from=date&to=date
+
+if you need to fetch only product name 
+
+v1/api/products/from=date&to=date&fetch=product
+
+fetch quantity 
+
+v1/api/products/from=date&to=date&fetch=quantity
+
+fetch all 
+
+v1/api/products/from=date&to=date&fetch=all
+
+or 
+
+v1/api/products/from=date&to=date
