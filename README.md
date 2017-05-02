@@ -1,136 +1,27 @@
-# Installation 
-1- clone the Git Repository
- 
-2- Run 
+# Laravel PHP Framework
 
-```php
-composer install
-```
+[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
+[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
+[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
+[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
+[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
 
-3- create database 
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
 
-4- run 
-```php
-php artisan install
-```
-and follow instructions 
+Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
 
-# Note : 
-If installation failed you need to follow the second option 
+## Official Documentation
 
-1- rename 1.env to .env 
+Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
 
-2- open .env file and edit it for : 
-```php
+## Contributing
 
-DB_HOST=your host (usually localhost)
-DB_DATABASE=your database name
-DB_USERNAME=database usernamee
-DB_PASSWORD=database password
-DB_PORT=database port (usually 3306)
-```
-3- run 
+Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
 
-```php
-sudo chmod -R 777 storage/ bootstrap/cache uploads/
-```
-4- run 
-```php
-php artisan migrate
-```
-5- finally  run 
-```php
-php artisan db:seed
-```
-# Admin Credentials 
-```php
-user email : admin@admin.com
+## Security Vulnerabilities
 
-password : 123456
-```
-# Api 
-# for login
+If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
 
+## License
 
-![](docs/Selection_001.png)
-
-URL/api/v1/authenticate
-
-submit a post request with the user email and password
-
-## if email and password is correct it will return a 60 character length string
-## and you can use that string on accessing the api resources listed below.
-![](docs/Selection_002.png)
-
-## if email and password is incorrent
-![](docs/Selection_003.png)
-
-## if invalid token was used
-![](docs/Selection_006.png)
-
-## two ways to use token to access resources:
-### 1. via headers, Authorization: Bearer 60_length_token_string
-![](docs/Selection_005.png)
-### 2. via query string, URL/api/v1/galleries?api_token=60_length_token_string
-![](docs/Selection_004.png)
-
-# Reset Token
-
-URL/api/v1/reset
-
-## it will return a new token and the old token will be discarded
-![](docs/Selection_007.png)
-
-# All Galleries 
-
-```php
-URL/api/v1/galleries
-```
-
-# Specefic gallery
-
-```php
-URL/api/v1/galleries/{ID}
-```
-
-# Childs Galleries from one gallery 
-
-```php
-URL/api/v1/galleries/{ID}/galleries
-```
-
-# Gallery Photos 
-```php
-URL/api/v1/galleries/{ID}/photos
-
-```
-# Specific Photo 
-
-```php
-URL/api/v1/photos/{ID}
-
-```
-
-
-to make a product request you need to go 
-v1/api/products
-
-if you need to fetch some accurate date 
-
-v1/api/products?from=date&to=date
-
-if you need to fetch only product name 
-
-v1/api/products/from=date&to=date&fetch=product
-
-fetch quantity 
-
-v1/api/products/from=date&to=date&fetch=quantity
-
-fetch all 
-
-v1/api/products/from=date&to=date&fetch=all
-
-or 
-
-v1/api/products/from=date&to=date
+The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).

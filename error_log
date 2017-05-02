@@ -1,0 +1,1 @@
+[04-Apr-2017 14:59:56 UTC] PHP Fatal error:  Class 'Barryvdh\Cors\ServiceProvider' not found in /webdrive/factoryunlock/public_html/sunder/vendor/laravel/framework/src/Illuminate/Foundation/Application.php on line 606
